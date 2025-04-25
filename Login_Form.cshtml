@@ -1,0 +1,430 @@
+﻿
+@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Admin Login</title>
+
+    <!--Stylesheet-->
+    <style media="screen">
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url("/images/background.jpg");
+            background-size:cover;
+            background:no-repeat;
+        }
+
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 50%;
+            
+            
+        }
+
+            .background .shape {
+                height: 200px;
+                width: 200px;
+                position: absolute;
+                border-radius: 50%;
+            }
+
+        .shape:first-child {
+            background: linear-gradient( #1845ad, #23a2f6 );
+            left: -80px;
+            top: -80px;
+        }
+
+        .shape:last-child {
+            background: linear-gradient( to right, #ff512f, #f09819 );
+            right: -30px;
+            bottom: -80px;
+        }
+
+        form {
+            height: 520px;
+            width: 400px;
+            background-color: black;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            padding: 50px 35px;
+        }
+
+            form * {
+                font-family: 'Poppins',sans-serif;
+                color: #ffffff;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+            }
+
+            form h3 {
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 42px;
+                text-align: center;
+            }
+
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: gray;
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        ::placeholder {
+            color: powderblue;
+        }
+
+        button {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="Post">
+        <h3>Admin Login</h3>
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter Email" required name="admin_email">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" required name="admin_password" id="admin_password">
+
+        <button>Log In</button>
+        
+        @if(ViewBag.message != null)
+        {
+            <H5  style="color:red; margin-top:6%; margin-left:7%;">@ViewBag.message;</H5>
+        }
+    </form>
+</body>
+</html> *@
+
+
+<!DOCTYPE html>
+<html lang="">
+
+<!-- Mirrored from hmsapp.in/hospital/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 Feb 2025 07:14:56 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Health Center Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="~/loginpage/hmsapp.in/hospital/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/loginpage/hmsapp.in/hospital/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/loginpage/hmsapp.in/hospital/ionic/css/ionicons.min.html">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/loginpage/hmsapp.in/hospital/css/AdminLTE.min.css">
+    <link rel="icon" type="image" href="@Url.Content("~/B_logo/logo.jpg")">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/loginpage/hmsapp.in/hospital/css/skins/_all-skins.min.css">
+    <link href="~/loginpage/hmsapp.in/hospital/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.js"></script>
+
+ 
+    <style type="text/css">
+        body {
+        }
+
+        .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+            background-color: none !important;
+        }
+
+    </style>
+    <link href="~/loginpage/hmsapp.in/hospital/datatables/datatables.min.css" rel="stylesheet">
+    <!-- Jquery Notifications -->
+    <link href="~/loginpage/hmsapp.in/hospital/css/jquery_notification.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            background: url('@Url.Content("~/loginpage/hmsapp.in/hospital/images/Backround.jpg")') no-repeat;
+            background-size: cover;
+        }</style>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="~/B_logo/logo.jpg" style="height:150px;" alt="">
+                    <h1 class="hidden">HMS</h1>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+
+
+
+            <style>
+                .swal2-popup.swal2-toast {
+                    font-size: 15px !important;
+                }
+            </style>
+
+            <div class=" col-md-offset-6 col-md-6 clearfix  " style="padding:10px;">
+
+                <div class="col-md-12 " style="background-color:rgba(255,255,255,0.2); border-radius:10px;">
+
+
+
+                    <h4 class="page-header"><i class="glyphicon glyphicon-user"></i> Admin Login</h4>
+
+
+                    <form method="post" asp-action="Login_Form" asp-controller="Admin" >
+                        @if (ViewBag.ErrorMessage != null)
+                        {
+                            <script>
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.onmouseenter = Swal.stopTimer;
+                                        toast.onmouseleave = Swal.resumeTimer;
+                                    }
+                                });
+
+                                Toast.fire({
+                                    icon: "error",
+                                    title: "@ViewBag.ErrorMessage"
+                                });
+                            </script>
+                        }
+
+
+                        <div class="form-group">
+
+                            <label for="">Admin Email</label>
+
+                            <input type="email" name="admin_email" class="form-control input-lg" placeholder="Email" id="username">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" maxlength="10" name="admin_password"  placeholder="Password" class="form-control input-lg" />
+                        </div>
+
+
+
+                        <button type="submit"  class="btn btn-success">
+                            <span class="glyphicon glyphicon-lock"></span>
+                            Login
+                        </button>
+                     @*    <a href="~/loginpage/hmsapp.in/hospital/#" data-toggle="modal" data-target=".bs-example-modal-xs" class="text-danger">Forgot Password ?</a> *@
+                        <br><br><br>
+                        
+                    </form>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Footer Linked Files -->
+    <!-- jQuery 2.1.4 -->
+    <script src="~/loginpage/hmsapp.in/hospital/js/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="~/loginpage/hmsapp.in/hospital/js/bootstrap.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="~/loginpage/hmsapp.in/hospital/js/app.min.js"></script>
+    <!-- Jquery Notifications -->
+    <script src="~/loginpage/hmsapp.in/hospital/js/jquery_notification_v.1.js"></script>
+
+    <!-- Data tables -->
+    <script src="~/loginpage/hmsapp.in/hospital/datatables/datatables.min.js"></script>
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Delete Alert</h3>
+                </div>
+                <div class="modal-body">
+                    <p>You are about to delete.</p>
+
+                    <p>Do you want to proceed?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+            $(document).ready(function() {
+
+            $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+        } );
+    </script>
+
+    <script>
+
+
+            $(document).ready(function(){
+
+                $('#username').focus();
+
+                $('#forgotBtn').click(function(){
+
+                    var contactno=$('#contactno').val();
+                    var regexAlpha=/^[a-zA-Z]+$/;
+                    if(contactno==""){
+                        alert("Mobileno. Not Empty");
+                    }
+                    else if (contactno.match(regexAlpha)){
+                        alert("Only Numbers are allowed.");
+                    }
+                    else{
+
+                        $.post('inc/forgot.html',{contactno:contactno},function(responseData){
+
+                            alert(responseData);
+                            window.location.href="~/loginpage/hmsapp.in/hospital/index.html";
+
+                        });
+
+                    }
+
+                });
+            });
+          //Submitting Advance Info
+          $('body').on('submit', 'form.login', function()
+
+            {
+
+        $("#LoadingImage").show();
+
+        $.ajax({
+             url:"process.php",
+             type:"POST",
+             data:new FormData(this),
+             contentType:false,
+             cache:false,
+             processData:false,
+             success:function(response){
+
+               if(response=='success'){
+        alert(response);
+
+        //	window.location.href="~/loginpage/hmsapp.in/hospital/hmsapp.in/hospital/dashboard.php";
+
+
+
+               }else{
+
+              showNotification({
+
+              message:response,
+              autoClose:true,
+              type:"error",
+              duration:2
+                       });
+                 $("#LoadingImage").hide();
+               }
+
+
+               }
+
+             });
+        return false;
+        //e.preventDefault();
+            });
+
+    </script>
+
+    <div class="modal  fade bs-example-modal-xs" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog" role="document" style="
+    width: 447px !important ;
+    margin: 150px auto !important ; ">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Forgot Password ?</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>Enter Registered Mobileno ?</label>
+                            <input type="text" name="contactno" placeholder=" Registered Mobileno " class="form-control" id="contactno" maxlength="10">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" name="forgot" id="forgotBtn" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Mirrored from hmsapp.in/hospital/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 Feb 2025 07:14:59 GMT -->
+</html>

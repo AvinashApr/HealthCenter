@@ -1,0 +1,108 @@
+﻿@using healt_Center.Models
+@{
+    ViewData["Title"] = "update_Doctor";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+@model AboutDoctor
+
+
+
+      <form method="post" enctype="multipart/form-data">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6">  
+                            <input type="hidden" value="@Model.Doctor_id" name="Doctor_id"/>
+                        <b> Name:</b>
+                            <input type="text" name="Doctor_name" class="form-control" value="@Model.Doctor_name" placeholder="Doctor_Name" />
+                            <br />
+                        <b>Number:</b>
+                            <input type="number" name="Doctor_number" class="form-control" value="@Model.Doctor_number" placeholder="Doctor_Number" />
+                            <br />
+                        <b>Department:</b>
+                            <select name="Doctor_department" class="form-control">
+                                <option disabled selected>--Select Department--</option>
+                                @if (ViewData["department"].ToString() == "General Health")
+                                {
+                                    <option selected>General Health</option>
+                                }
+                                else
+                                {
+                                    <option>General Health</option>
+                                }
+                                @if (ViewData["department"].ToString() == "Cardiology")
+                                {
+                                    <option selected>Cardiology</option>
+                                }
+                                else
+                                {
+                                    <option>Cardiology</option>
+                                }
+
+                                @if (ViewData["department"].ToString() == "Dental")
+                                {
+                                    <option selected>Dental</option>
+                                }
+                                else
+                                {
+                                    <option>Dental</option>
+                                }
+                                @if (ViewData["department"].ToString() == "Medical Research")
+                                {
+                                    <option selected>Medical Research</option>
+                                }
+                                else
+                                {
+                                    <option>Medical Research</option>
+                                }
+
+                            </select>
+                            <br />
+                           
+                        </div>
+                        <div class="col-sm-6">
+                        <b>Email:</b>
+                            <input type="email" name="Doctor_email" value="@Model.Doctor_email" class="form-control" placeholder="Doctor_Email" />
+                            <br />
+                        <b>Gender:</b>
+                            <select name="Doctor_gender" class="form-control">
+                                <option disabled selected>--Select Gender--</option>
+                                @if (ViewData["gender"].ToString() == "Male")
+                                {
+                                    <option selected>Male</option>
+
+                                }
+                                else
+                                {
+                                    <option>Male</option>
+                                }
+                                @if (ViewData["gender"].ToString() == "Female")
+                                {
+                                    <option selected>Female</option>
+
+                                }
+                                else
+                                {
+                                    <option>Female</option>
+                                }
+
+                        </select>
+                        <br />
+                        <b>Profile:</b>
+                        <input type="file" src="@Url.Action("~/Doctor_pic/" + ViewBag.Doctor_Pic)" name="Doctor_pic" class="form-control" width="100px" height="60px" /><br /><br />
+                                </div>
+
+                    <button class="btn btn-danger form-control" >UPDATE DOCTORS</button>
+                    
+                    </from>
+                </div>
+                </div>
+
+            </div>
+
+        
+
+
+  

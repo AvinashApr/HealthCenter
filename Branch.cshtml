@@ -1,0 +1,233 @@
+﻿@using healt_Center.Models
+
+@{
+    ViewData["Title"] = "Update Branch";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+
+
+
+
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Basic Form Inputs card start -->
+            <div class="card">
+
+                <div class="card-block">
+                    <h4 class="sub-title">Branch</h4>
+                    <form method="post" enctype="multipart/form-data" action="@Url.Action("update_branch", "admin")">
+                        <input type="hidden" value="@ViewBag.id" name="B_id"  />
+                     
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Branch Number</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control"
+                                      name="B_Number" value="@ViewBag.number"  placeholder="Enter your Contact Number">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Branch Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control"
+                                       name="B_email" value="@ViewBag.email" placeholder="Branch Email">
+                            </div>
+                       </div>
+
+
+
+
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Monday To Friday</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       name="B_opening" value="@ViewBag.mTof" placeholder="10 Am - 10 Pm" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Saturday</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       name="B_saturday" value="@ViewBag.saturday"  placeholder="Open / Close" />
+                            </div>
+                        </div>
+
+
+                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Sunday</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       name="B_sunday" value="@ViewBag.sunday" placeholder="Open / Close " />
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Facebook Link</label>
+                            <div class="col-sm-10">
+                                <input type="text"
+                                       name="fb_link" value="@ViewBag.facebook" class="form-control" placeholder="Facebook link">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Instagram Link</label>
+                            <div class="col-sm-10">
+                                <input type="text"
+                                       name="insta_link" value="@ViewBag.insta" class="form-control" placeholder="Instagram link">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Twitter Link</label>
+                            <div class="col-sm-10">
+                                <input type="text"
+                                       name="twt_link" value="@ViewBag.twt" class="form-control" placeholder="Twitter link">
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Branch Logo</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" name="B_logo" />
+                            </div>
+                            
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea rows="5" cols="5" class="form-control"
+                                          name="B_description" placeholder="Enter your description here..">@ViewBag.description</textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10 text-center">
+                                <button class="btn btn-primary btn-block btn btn-grd-primary">Save</button>
+
+                            </div>
+                        </div>
+
+
+
+
+                        
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@*----------------------- TAbles-------------------------------------- *@
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h5>Doctors</h5>
+
+        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Email</th>
+                        <th>Opening Days</th>
+                        <th>Saturday Opening</th>
+                        <th>Sunday Closing</th>
+                        <th>FacebookLink</th>
+                        <th>Instalink</th>
+                        <th>TwtLink</th>
+                        <th>Description</th>
+                        <th>Logo</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        @foreach (var branch in Model)
+                        {
+                            <tr>
+                                <td>@branch.B_Number</td>
+                                <td>@branch.B_email</td>
+                                <td>@branch.B_opening</td>
+                                <td>@branch.B_saturday</td>
+                                <td>@branch.B_sunday</td>
+                                <td>@branch.fb_link</td>
+                                <td>@branch.insta_link</td>
+                                <td>@branch.twt_link</td>
+                               @*  <td>@branch.B_description</td> *@
+
+
+                                <td>
+                                    @(string.IsNullOrEmpty(branch.B_description)
+                                        ? ""
+                                        : (branch.B_description.Length > 20
+                                        ? branch.B_description.Substring(0, 20) + "..."
+                                        : branch.B_description))
+                                </td>
+
+                                <td>
+                                    <img src="@Url.Content("~/B_logo/" + branch.B_logo)" class="img-thumbnail" style="max-width: 50px; max-height: 50px; border-radius:50%;" />
+                                </td>
+                                <td>
+                                    <a class="btn btn-grd-primary text-light" href="@Url.Action("Branch_get", "admin", new { id = branch.B_id })"><i class="ti-pencil text-light"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

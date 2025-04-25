@@ -1,0 +1,62 @@
+﻿@using healt_Center.Models
+@{
+    ViewData["Title"] = "ConfirmedAppointment";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@model List<patient>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Doctors</h5>
+
+        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>SR</th>
+                        <th>User Name</th>
+                        <th>User Email</th>
+                        <th>User Date</th>
+                        <th>User Department</th>
+                        <th>Time</th>
+                        <th class="fixed-width">Admin Message</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        var i = 1;
+                        @foreach (var capp in Model)
+                        {
+
+                            <tr>
+                                <td>@i</td>
+                                <td>@capp.name</td>
+                                <td>@capp.email</td>
+                                <td>@capp.date</td>
+                                <td>@capp.Department</td>
+                                <td>@capp.admin_time</td>
+                                <td>@capp.admin_message</td>
+                                @if (capp.status == 0)
+                                {
+                                    <th style="color:red;">Pending</th>
+                                }
+                                else
+                                {
+                                    <th style="color:green;">Confirmed</th>
+                                }
+                                <th><a href="@Url.Action("FixSchedule","admin",new{Id=capp.Id})" class="btn btn-grd-primary text-light">Re Fix Schedule</a></th>
+                            </tr>
+                            i = i + 1;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

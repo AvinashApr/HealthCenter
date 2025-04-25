@@ -1,0 +1,66 @@
+﻿@using healt_Center.Models
+@{
+    ViewData["Title"] = "Update_Branch";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+@model branch
+<style>
+    .form-control::placeholder {
+        color: gray; /* Make sure it's visible */
+        opacity: 1; /* Ensure it's not transparent */
+    }
+</style>
+
+@if(Model !=null)
+{
+<form method="post" enctype="multipart/form-data">
+    <div class="container-fluid card">
+        <h1 style="padding-left:40%;font-weight:bold;"><u>BRANCH</u></h1>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="hidden" name="B_id" value="@Model.B_id" />
+                        <b>Number:</b>
+                        <input type="number" name="B_Number" value="@Model.B_Number"  class="form-control" placeholder="Enter your Contact Number" />
+                        <br />
+                        <b>Email:</b>
+                        <input type="email" name="B_email" value="@Model.B_email" class="form-control" placeholder="Branch_Email" />
+                        <br />
+                        <b>Monday To Friday:</b>
+                        <input type="text" name="B_opening" value="@Model.B_opening" class="form-control" placeholder="Open Dayes" />
+                        <br />
+                        <b>Saturday:</b>
+                        <input type="text" name="B_saturday" value="@Model.B_saturday" class="form-control" placeholder="Days..." />
+                        <br />
+                        <b>Sunday:</b>
+                        <input type="text" name="B_sunday" value="@Model.B_sunday" class="form-control" placeholder="Days..." />
+                        <br />
+                        <button class="btn btn-danger mt-3">UPDATE BRANCH</button>
+                    </div>
+                    <div class="col-sm-6">
+
+
+                        <b>Facebook:</b>
+                        <input type="text" name="fb_link" value="@Model.fb_link" class="form-control" placeholder="Facebook link" />
+                        <br />
+                        <b>Instagram:</b>
+                        <input type="text" name="insta_link" value="@Model.insta_link" class="form-control" placeholder="Instagram link" />
+                        <br />
+                        <b>Twitter:</b>
+                        <input type="text" name="twt_link" value="@Model.twt_link" class="form-control" placeholder="Twitter link" />
+                        <br />
+                        <b>Branch Logo:</b>
+                        <input type="file" class="form-control" name="B_logo" /><br />
+                        <b class="mt-1">Description:</b>
+                        <textarea class="form-control" rows="3"  name="B_description" placeholder="Enter your description here..">@Model.B_description</textarea>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+}

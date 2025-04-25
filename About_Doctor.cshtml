@@ -1,0 +1,209 @@
+﻿@using healt_Center.Models
+@{
+    ViewData["Title"] = "About_Doctor";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@model List<AboutDoctor>
+
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Basic Form Inputs card start -->
+            <div class="card">
+
+                <div class="card-block">
+                    <h4 class="sub-title">About Doctors</h4>
+                    <form method="post" enctype="multipart/form-data" action="@Url.Action("update_Doctor", "admin")">
+                        <input type="hidden" name="Doctor_id" value="@ViewBag.Id" />
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Doctor Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       name="Doctor_name" class="form-control" placeholder="Doctor Name" value="@ViewBag.name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Doctor Number</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control"
+                                       name="Doctor_number" value="@ViewBag.number" placeholder="Doctor Number">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Doctor Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control"
+                                       name="Doctor_email" value="@ViewBag.email" placeholder="Doctor Email">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">LinkedIn Profile Link</label>
+                            <div class="col-sm-10">
+                                <input type="text"
+                                       name="LinkdIn" class="form-control" value="@ViewBag.LinkdIn" placeholder="LinkedIn Profile Link">
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Department</label>
+                            <div class="col-sm-10">
+                                <select name="Doctor_department" class="form-control">
+                                    <option disabled selected>~~Select Department~~</option>
+                                    <option value="General Health" @(ViewData["department"]?.ToString() == "General Health" ? "selected" : "")>General Health</option>
+                                    <option value="Cardiology" @(ViewData["department"]?.ToString() == "Cardiology" ? "selected" : "")>Cardiology</option>
+                                    <option value="Dental" @(ViewData["department"]?.ToString() == "Dental" ? "selected" : "")>Dental</option>
+                                    <option value="Medical Research" @(ViewData["department"]?.ToString() == "Medical Research" ? "selected" : "")>Medical Research</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Gender</label>
+                            <div class="col-sm-10">
+                                <select name="Doctor_gender" class="form-control">
+                                    <option disabled selected>~~Select Gender~~</option>
+                                    <option value="Male" @(ViewData["gender"]?.ToString() == "Male" ? "selected" : "")>Male</option>
+                                    <option value="Female" @(ViewData["gender"]?.ToString() == "Female" ? "selected" : "")>Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Upload File</label>
+                            <div class="col-sm-10">
+                                <input type="file" id="Doctor_pic" name="Doctor_pic" class="form-control" onchange="previewImage(event)">
+                            </div>
+                            <div id="imagePreview" class="mt-3">
+                                <!-- Image preview will be displayed here -->
+                                @if (!string.IsNullOrEmpty(ViewData["image"]?.ToString()))
+                                {
+                                    <img src="@("/Doctor_pic/" + ViewData["image"])" class="img-thumbnail doctor-pic" style="height:100px;margin-left:230px;" />
+                                }
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10 text-center">
+                                <button class="btn btn-primary btn-block btn btn-grd-primary">Save</button>
+
+                            </div>
+                        </div>
+
+
+
+
+                        @* <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Textarea</label>
+                            <div class="col-sm-10">
+                                <textarea rows="5" cols="5" class="form-control"
+                                          placeholder="Default textarea"></textarea>
+                            </div>
+                        </div> *@
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h5>Doctors</h5>
+
+        <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+                <li><i class="icofont icofont-simple-left "></i></li>
+                <li><i class="icofont icofont-maximize full-card"></i></li>
+                <li><i class="icofont icofont-minus minimize-card"></i></li>
+                <li><i class="icofont icofont-refresh reload-card"></i></li>
+
+                <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>SR</th>
+                        <th>Doctor Name</th>
+                        <th>Doctor Email</th>
+                        <th>Doctor Number</th>
+                        <th>Doctor Gender</th>
+                        <th>Doctor Department</th>
+                        <th>Doctor LinkedIn</th>
+                        <th>Doctor Pic</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        var i = 1;
+                        @foreach (var Doc in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@Doc.Doctor_name</td>
+                                <td>@Doc.Doctor_email</td>
+                                <td>@Doc.Doctor_number</td>
+                                <td>@Doc.Doctor_gender</td>
+                                <td>@Doc.Doctor_department</td>
+                                <td>@Doc.LinkdIn</td>
+                                <td>
+                                    <img src="@("/Doctor_pic/" + Doc.Doctor_Pic)" class="img-thumbnail doctor-pic" style="max-width: 50px; max-height: 50px; border-radius:50%;" />
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Get_doctor", "admin", new { Id = Doc.Doctor_id })" class="btn btn-grd-primary text-light " id="update-button"><i class="ti-pencil text-light"></i></a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

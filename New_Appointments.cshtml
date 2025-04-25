@@ -1,0 +1,128 @@
+﻿@using healt_Center.Models
+
+@{
+    ViewData["Title"] = "New_Appointments";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+@* <div class="container-fluid card mt-5">
+    <table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+
+            <th>SR</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Department</th>
+            <th>Phone</th>
+            <th>Massege</th>
+            <th>Status</th>
+            <th>Action</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            var i = 1;
+            @foreach (var patient in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@patient.name</td>
+                    <td>@patient.email</td>
+                    <td>@patient.date</td>
+                    <td>@patient.Department</td>
+                    <td>@patient.phone</td>
+                    <td>@patient.message</td>
+                    @if (patient.status == 0)
+                    {
+                        <th style="color:red;" >Pending</th>
+                    }
+                    else
+                    {
+                        <th style="color:green;">Confirmed</th>
+                    }
+                    <th><a href="@Url.Action("FixSchedule","admin",new{Id=patient.Id})" class="btn btn-danger">Fix Schedule</a></th>
+                </tr>
+                i = i + 1;
+            }
+        }
+    </tbody>
+
+</table>
+</div>
+
+ *@
+
+
+
+
+
+
+
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h5>Doctors</h5>
+
+        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>SR</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                        <th>Department</th>
+                        <th>Phone</th>
+                        <th>Massege</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        var i = 1;
+                        @foreach (var patient in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@patient.name</td>
+                                <td>@patient.email</td>
+                                <td>@patient.date</td>
+                                <td>@patient.Department</td>
+                                <td>@patient.phone</td>
+                                <td>@(patient.message.Length > 50 ? patient.message.Substring(0, 20) + "..." : patient.message)</td>
+
+
+
+
+                             
+                                @if (patient.status == 0)
+                                {
+                                    <th style="color:red;">Pending</th>
+                                }
+                                else
+                                {
+                                    <th style="color:green;">Confirmed</th>
+                                }
+                                <th><a href="@Url.Action("FixSchedule","admin",new{Id=patient.Id})" class="btn btn-grd-primary text-light">Fix Schedule</a></th>
+                            </tr>
+                            i = i + 1;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
